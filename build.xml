@@ -1,0 +1,19 @@
+ <project name= "MatrixLib" default= "all" >
+    <target name="make_dirs" description="Make dirs">
+      <mkdir dir="build"/>
+      <mkdir dir="build/classes"/>
+    </target>
+    <target name= "compile" description= "Compile java files" depends= "make_dirs">
+      <javac destdir="build/classes">
+        <src path="src"/>
+      </javac>
+    </target>
+    <target name="make_jar" description="Make jar file" depends="compile">
+      <jar destfile="build/Mtr.jar">
+        <fileset dir="build/classes">
+          <include name="**/*.class"/>
+        </fileset>
+      </jar>
+    </target>
+    <target name="all" description="Start" depends="make_jar"/>
+  </project>
